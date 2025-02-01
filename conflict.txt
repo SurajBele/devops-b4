@@ -1,4 +1,1 @@
-
-this is main branch
-this is master branch
-this is mergering and resolving conflict
+this is my main branch
