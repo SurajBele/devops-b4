@@ -4,7 +4,7 @@ provider "aws" {
 resource "aws_instance" "myec2" {
   ami = "ami-01816d07b1128cd2d"
   key_name = "id_rsa"
-  instance_type =  t2.micro
+  instance_type =  "t2.micro"
   vpc_security_group_ids = [ "mysg", "mysg2" ]
   tags = {
     Name = "spiderman instance"
