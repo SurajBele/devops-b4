@@ -7,7 +7,7 @@ resource "aws_vpc" "spider_vpc" {
 }
 resource "aws_subnet" "pub_sub" {
     vpc_id = aws_vpc.spider_vpc.id
-    cidr_block = "10.0.0.0/20"
+    cidr_block = "10.0.0.0/24"
     map_public_ip_on_launch = true
     tags = {
     name = "my_pub_subnet"
@@ -16,7 +16,7 @@ resource "aws_subnet" "pub_sub" {
 }
 resource "aws_subnet" "pvt_sub" {
     vpc_id = aws_vpc.spider_vpc.id
-    cidr_block = "10.0.1.0/20"
+    cidr_block = "10.0.1.0/24"
     map_public_ip_on_launch = false
     tags = {
     name = "my_pvt_subnet"
@@ -29,7 +29,7 @@ resource "aws_internet_gateway" "myigw" {
 resource "aws_route_table" "myroutetable" {
   vpc_id = aws_vpc.spider_vpc.id
   route {
-    cidr_block = "10.0.1.0/24"
+    cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.myigw.id
   }
 }
