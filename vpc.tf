@@ -69,3 +69,10 @@ output "aws_instance" {
 output "aws_vpc" {
   value = aws_vpc.spider_vpc.id
 }
+data "aws_security_groups" "mysg" {
+  
+  filter {
+    name = "group-name"
+    values = ["mysg"]
+  }
+}
