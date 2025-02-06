@@ -5,6 +5,6 @@ output "aws_instance" {
 output "aws_vpc" {
   value = aws_vpc.spider_vpc.id
 }
-output "mysg.id" {
+output "mysg_id" {
   value = data.aws_security_groups.mysg.id
 }
