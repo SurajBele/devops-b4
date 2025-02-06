@@ -8,11 +8,21 @@ terraform {
 provider "aws" {
   region = var.region
 }
+data "aws_security_groups" "mysg" {
+  filter {
+    name   = "vpc-id"
+    values = ["vpc-0b0072d19f34389e0"]
+  }
+  filter {
+    name = "group-name"
+    values = ["mysg"]
+  }
+}
 resource "aws_instance" "myec2" {
   ami = "ami-01816d07b1128cd2d"
   key_name = "id_rsa"
   instance_type =  "t2.micro"
-  vpc_security_group_ids = ["data.aws_security_groups.mysg"]
+  vpc_security_group_ids = [ "data.aws_security_groups.mysg", ]
   subnet_id = aws_subnet.pub_sub.id
   tags = {
     Name = "spiderman instance"
@@ -62,13 +72,3 @@ resource "aws_route_table_association" "route-subnet" {
 
 
 
-data "aws_security_groups" "mysg" {
-  filter {
-    name   = "vpc-id"
-    values = ["vpc-0b0072d19f34389e0"]
-  }
-  filter {
-    name = "group-name"
-    values = ["mysg"]
-  }
-}
