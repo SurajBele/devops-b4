@@ -1,4 +1,4 @@
-provider "aws" {
+/*provider "aws" {
   region = "us-east-1" 
 }
 
@@ -47,4 +47,4 @@ resource "aws_security_group" "web_sg" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
+}*/
