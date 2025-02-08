@@ -21,7 +21,7 @@ variable "instance_type" {
   default = "t2.micro"
 }
 variable "key_name" {
-   default = "key.pem"
+   default = "key"
 }
 variable "sgid" {
   default = "sg-02608d1f30ba4fe58"
