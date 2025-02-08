@@ -2,7 +2,7 @@ terraform {
   backend "s3" {
     bucket = "devopb4"
     key = "module_terrafrom.tfstate"
-    region = var.region
+    region = "us-east-1"
   }
 }
 provider "aws" {
