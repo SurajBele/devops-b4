@@ -1,3 +1,6 @@
+
+this is my main branch
+this is the resolution
 this is  my master branch
 this content added by suraj
 =======
