@@ -6,6 +6,11 @@ variable "vpc_id" {
   description = "VPC ID where ALB will be deployed"
 }
 
+variable "subnet_ids" {
+  description = "List of subnet IDs where ALB will be deployed"
+  type        = list(string)
+}
+
 resource "aws_security_group" "alb_sg" {
   name_prefix = "alb-sg-"
   vpc_id      = var.vpc_id
@@ -30,7 +35,7 @@ resource "aws_lb" "app_lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = var.subnets
+  subnets            = var.subnet_ids
 }
 
 resource "aws_lb_target_group" "app_tg" {
