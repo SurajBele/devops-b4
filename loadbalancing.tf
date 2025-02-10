@@ -11,13 +11,6 @@ resource "aws_subnet" "subnet_anil" {
   cidr_block        = "172.25.1.0/24"
   availability_zone = "${ap-south-1a}anil"
 }
-
-resource "aws_subnet" "subnet_sunil" {
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = "172.25.2.0/24"
-  availability_zone = "${ap-south-1b}sunil"
-}
-
 resource "aws_security_group" "alb_sg" {
   vpc_id = aws_vpc.main.id
 
