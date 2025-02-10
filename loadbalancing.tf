@@ -9,13 +9,13 @@ resource "aws_vpc" "main" {
 resource "aws_subnet" "subnet_anil" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "172.25.1.0/24"
-  availability_zone = "${ap-south-1a}"
+  availability_zone = "${ap-south-1a}anil"
 }
 
 resource "aws_subnet" "subnet_sunil" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "172.25.2.0/24"
-  availability_zone = "${ap-south-1b}"
+  availability_zone = "${ap-south-1b}sunil"
 }
 
 resource "aws_security_group" "alb_sg" {
