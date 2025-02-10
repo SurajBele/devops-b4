@@ -75,7 +75,3 @@ resource "local_file" "index_html" {
   content  = "<html><body><h1>Welcome to My Static Website</h1></body></html>"
   filename = "index.html"
 }
-
-output "website_url" {
-  value = "http://${aws_s3_bucket.website_bucket.bucket}.s3-website-${provider.aws.region}.amazonaws.com"
-}
