@@ -1,19 +1,36 @@
 provider "aws" {
   region = "ap-south-1"
 }
+resource "aws_vpc" "main" {
+  cidr_block = "10.0.0.0/16"
+}
+resource "aws_subnet" "subnet_a" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.1.0/24"
+  availability_zone       = "ap-south-1a"
+  map_public_ip_on_launch = true
+}
+
+resource "aws_subnet" "subnet_b" {
+  vpc_id                  = aws_vpc.main.id
+  cidr_block              = "10.0.2.0/24"
+  availability_zone       = "ap-south-1b"
+  map_public_ip_on_launch = true
+}
 
 variable "vpc_id" {
   description = "VPC ID where ALB will be deployed"
+  default     = "" # Set this if using an existing VPC
 }
 
 variable "subnet_ids" {
   description = "List of subnet IDs where ALB will be deployed"
   type        = list(string)
+  default     = [] # Set this if using existing subnets
 }
 
 resource "aws_security_group" "alb_sg" {
-  name_prefix = "alb-sg-"
-  vpc_id      = var.vpc_id
+  vpc_id = aws_vpc.main.id
 
   ingress {
     from_port   = 80
@@ -35,14 +52,14 @@ resource "aws_lb" "app_lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets            = var.subnet_ids
+  subnets            = [aws_subnet.subnet_a.id, aws_subnet.subnet_b.id]
 }
 
 resource "aws_lb_target_group" "app_tg" {
   name     = "app-target-group"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = var.vpc_id
+  vpc_id   = aws_vpc.main.id
 }
 
 resource "aws_lb_listener" "http" {
@@ -54,8 +71,4 @@ resource "aws_lb_listener" "http" {
     type             = "forward"
     target_group_arn = aws_lb_target_group.app_tg.arn
   }
-}
-
-output "alb_dns_name" {
-  value = aws_lb.app_lb.dns_name
 }
