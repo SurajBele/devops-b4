@@ -94,3 +94,7 @@ resource "aws_lb_listener" "http" {
 output "alb_dns_name" {
   value = aws_lb.app_lb.dns_name
 }
+resource "local_file" "index_html" {
+   content  = "<html><body><h1>Welcome to My Static Website</h1></body></html>"
+   filename = "index.html"
+ }
