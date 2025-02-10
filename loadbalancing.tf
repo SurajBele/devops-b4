@@ -2,17 +2,13 @@ provider "aws" {
   region = "ap-south-1"
 }
 
-resource "aws_vpc" "main" {
-  cidr_block = "172.25.0.0/16"
+variable "vpc_id" {
+  description = "VPC ID where ALB will be deployed"
 }
 
-resource "aws_subnet" "subnet_anil" {
-  vpc_id            = aws_vpc.main.id
-  cidr_block        = "172.25.1.0/24"
-  availability_zone = "${ap-south-1a}anil"
-}
 resource "aws_security_group" "alb_sg" {
-  vpc_id = aws_vpc.main.id
+  name_prefix = "alb-sg-"
+  vpc_id      = var.vpc_id
 
   ingress {
     from_port   = 80
@@ -34,14 +30,14 @@ resource "aws_lb" "app_lb" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb_sg.id]
-  subnets           = [aws_subnet.subnet_a.id, aws_subnet.subnet_anil.id]
+  subnets            = var.subnets
 }
 
 resource "aws_lb_target_group" "app_tg" {
   name     = "app-target-group"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = aws_vpc.main.id
+  vpc_id   = var.vpc_id
 }
 
 resource "aws_lb_listener" "http" {
