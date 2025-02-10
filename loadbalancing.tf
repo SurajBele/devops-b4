@@ -6,16 +6,16 @@ resource "aws_vpc" "main" {
   cidr_block = "172.25.0.0/16"
 }
 
-resource "aws_subnet" "subnet_a" {
+resource "aws_subnet" "subnet_anil" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "172.25.1.0/24"
-  availability_zone = "${AWS_REGION}a"
+  availability_zone = "${AWS_REGION}anil"
 }
 
-resource "aws_subnet" "subnet_b" {
+resource "aws_subnet" "subnet_sunil" {
   vpc_id            = aws_vpc.main.id
   cidr_block        = "172.25.2.0/24"
-  availability_zone = "${AWS_REGION}b"
+  availability_zone = "${AWS_REGION}sunil"
 }
 
 resource "aws_security_group" "alb_sg" {
