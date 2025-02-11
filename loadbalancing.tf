@@ -93,7 +93,7 @@ resource "aws_lb_listener" "http" {
 
 resource "aws_instance" "web_server" {
   ami = "ami_id"
-  key_name = key
+  key_name = "key"
   instance_type = "t2.micro"
   vpc_security_group_ids = [aws_security_group.my_sg]
 
