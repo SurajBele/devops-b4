@@ -95,7 +95,7 @@ resource "aws_instance" "web_server" {
   ami = "ami_id"
   key_name = "key"
   instance_type = "t2.micro"
-  vpc_security_group_ids = [default]
+  vpc_security_group_ids = [my_sg]
 
   user_data = base64encode(<<-EOF
               #!/bin/bash
@@ -113,7 +113,7 @@ resource "aws_instance" "web_server" {
     }
   }
 
-resource "aws_security_group" "default" {
+resource "aws_security_group" "my_sg" {
   name        = "my_sg"
   description = "Allow HTTP and SSH traffic"
 
