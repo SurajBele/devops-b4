@@ -91,10 +91,30 @@ resource "aws_lb_listener" "http" {
   }
 }
 
+resource "aws_launch_template" "web_server" {
+  name_prefix   = "web-server-"
+  image_id      = "ami-00bb6a80f01f03502"
+  instance_type = "t2.micro"
+
+  user_data = base64encode(<<-EOF
+              #!/bin/bash
+              yum update -y
+              yum install -y httpd
+              systemctl start httpd
+              systemctl enable httpd
+              echo "<h1>Welcome to My Web Server</h1>" > /var/www/html/index.html
+              EOF
+  )
+
+  tag_specifications {
+    resource_type = "instance"
+
+    tags = {
+      Name = "Web Server"
+    }
+  }
+}
+
 output "alb_dns_name" {
   value = aws_lb.app_lb.dns_name
 }
-resource "local_file" "index_html" {
-   content  = "<html><body><h1>I am Anil Pawar Welcome to My Static Website</h1></body></html>"
-   filename = "index.html"
- }
