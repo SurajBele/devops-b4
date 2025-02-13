@@ -2,6 +2,15 @@ provider "aws" {
   region = "us-east-1" 
 }
 
+terraform {
+  backend "s3" {
+    bucket         = "devopb4"   # Ensure this bucket exists
+    key            = "terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+  }
+}
+
 resource "aws_s3_bucket" "static_website" {
   bucket = "my-static-website-bucket-chandrika" 
 }
@@ -24,7 +33,7 @@ resource "aws_s3_bucket_policy" "public_read" {
       "Effect": "Allow",
       "Principal": "*",
       "Action": "s3:GetObject",
-      "Resource": "arn:aws:s3:::my-static-website-bucket/*"
+      "Resource": "arn:aws:s3:::my-static-website-bucket-chandrika/*"
     }
   ]
 }
