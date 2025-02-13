@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps Essentials - Terraform, Git & GitHub</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <h1>DevOps Essentials: Terraform, Git & GitHub</h1>
+        <nav>
+            <ul>
+                <li><a href="#terraform">Terraform</a></li>
+                <li><a href="#git">Git</a></li>
+                <li><a href="#github">GitHub</a></li>
+                <li><a href="#commands">Commands</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="terraform">
+        <h2>What is Terraform?</h2>
+        <p>Terraform is an open-source Infrastructure as Code (IaC) tool that allows users to define and manage cloud resources using a declarative configuration language.</p>
+        <h3>Key Features:</h3>
+        <ul>
+            <li>Infrastructure as Code (IaC)</li>
+            <li>Multi-Cloud Support</li>
+            <li>State Management</li>
+            <li>Automated Resource Provisioning</li>
+        </ul>
+        <h3>How to Set Up Terraform</h3>
+        <ol>
+            <li>Download Terraform from <a href="https://www.terraform.io/downloads.html" target="_blank">official site</a></li>
+            <li>Install it using a package manager</li>
+            <li>Initialize a new Terraform project using <code>terraform init</code></li>
+        </ol>
+    </section>
+    
+    <section id="git">
+        <h2>What is Git?</h2>
+        <p>Git is a distributed version control system that allows multiple developers to work on the same project efficiently.</p>
+        <h3>Why Use Git?</h3>
+        <ul>
+            <li>Track changes to your code</li>
+            <li>Collaborate with teams</li>
+            <li>Rollback to previous versions</li>
+        </ul>
+    </section>
+    
+    <section id="github">
+        <h2>What is GitHub?</h2>
+        <p>GitHub is a cloud-based hosting service for Git repositories, enabling better collaboration and code sharing.</p>
+        <h3>Features:</h3>
+        <ul>
+            <li>Pull requests and code reviews</li>
+            <li>Branching and merging</li>
+            <li>Issue tracking</li>
+        </ul>
+    </section>
+    
+    <section id="commands">
+        <h2>Important Commands</h2>
+        <h3>Terraform Commands</h3>
+        <ul>
+            <li><code>terraform init</code> - Initialize a new Terraform project</li>
+            <li><code>terraform plan</code> - Preview changes</li>
+            <li><code>terraform apply</code> - Apply changes</li>
+        </ul>
+        
+        <h3>Git Commands</h3>
+        <h4>Basic Commands</h4>
+        <ul>
+            <li><code>git init</code> - Initialize a new repository</li>
+            <li><code>git clone &lt;repository-url&gt;</code> - Clone an existing repository</li>
+            <li><code>git add .</code> - Stage changes</li>
+            <li><code>git commit -m "message"</code> - Commit changes</li>
+            <li><code>git status</code> - Check current status</li>
+        </ul>
+        
+        <h4>Branching</h4>
+        <ul>
+            <li><code>git branch</code> - List branches</li>
+            <li><code>git branch &lt;branch-name&gt;</code> - Create a new branch</li>
+            <li><code>git checkout &lt;branch-name&gt;</code> - Switch to a branch</li>
+            <li><code>git merge &lt;branch-name&gt;</code> - Merge a branch</li>
+        </ul>
+        
+        <h4>Pull and Push</h4>
+        <ul>
+            <li><code>git pull</code> - Fetch and merge changes</li>
+            <li><code>git push origin &lt;branch-name&gt;</code> - Push changes</li>
+        </ul>
+        
+        <h4>Stashing</h4>
+        <ul>
+            <li><code>git stash</code> - Save changes without committing</li>
+            <li><code>git stash pop</code> - Apply stashed changes</li>
+            <li><code>git stash list</code> - List stashed changes</li>
+        </ul>
+        
+        <h4>Logging</h4>
+        <ul>
+            <li><code>git log</code> - View commit history</li>
+            <li><code>git log --oneline</code> - View commit history in brief</li>
+        </ul>
+    </section>
+    
+    <footer id="contact">
+        <p>Contact us at <a href="mailto:info@devops.com">info@devops.com</a></p>
+    </footer>
+</body>
+</html>
