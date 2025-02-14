@@ -15,6 +15,12 @@ Resources are the components of your infrastructure (e.g., EC2 instance, S3 buck
 * State:
 Terraform keeps track of the current state of your infrastructure in a state file (terraform.tfstate). This file is used to compare your current infrastructure with the desired configuration.
 
+## terraform installation 
+```
+wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+```
 ## Basic Workflow
 * Write Configuration:
 You create .tf files that define your infrastructure. For example, a simple configuration for an AWS EC2 instance:
