@@ -95,6 +95,26 @@ Modules in Terraform are a way to organize and reuse infrastructure code. They a
   2. Child Modules: These are the reusable modules that can be referenced within your root module or other modules. A module can be in a separate directory or         pulled from a public or private registry.
   
   3. Pre-built Modules: The Terraform Registry offers many pre-built modules for different cloud providers and services. These modules can be used directly or         customized for your needs. 
+* Module Structure
+  A typical Terraform module is just a folder with .tf files. The structure might look like this:
+```
+  root
+ ├── main.tf            # Main configuration
+ ├── variables.tf       # Variable definitions
+ ├── outputs.tf         # Outputs
+ └── README.md          # Documentation (optional)
+```
+* Using a Module Locally
+Create the Module Folder:
+For example, you could create a folder named ec2_instance/ with the necessary .tf files.
 
+* Call the Module: In your main configuration:
+```
+module "ec2_instance" {
+  source = "./ec2_instance"   # Local path to the module
+  instance_type = "t2.micro"
+  ami_id        = "ami-0abcdef1234567890"
+}
+```
 
 
