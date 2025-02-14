@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "vaishu-stat-web" {
-  bucket = "vaishnavi-static-website-buc"
+  bucket = var.bucket-name
   tags = {
     Name        = "vaishnavi-StaticWebsite"
     Environment = "Dev"
@@ -56,7 +56,23 @@ resource "aws_s3_object" "index" {
 }
 resource "aws_s3_object" "style" {
   bucket = aws_s3_bucket.vaishu-stat-web.id
-  key    = "style.css"
-  source = "style.css"
+  key    = "styles.css"
+  source = "styles.css"
   content_type = "text/css"
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
